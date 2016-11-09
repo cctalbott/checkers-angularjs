@@ -1,0 +1,14 @@
+{
+  "name": "checkers-angularjs",
+  "description": "Object oriented and testing coding assignment in AngularJS",
+  "version": "0.0.0",
+  "homepage": "https://github.com/cctalbott/checkers-angularjs.git",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.5.0",
+    "angular-loader": "~1.5.0",
+    "angular-mocks": "~1.5.0",
+    "html5-boilerplate": "^5.3.0"
+  }
+}

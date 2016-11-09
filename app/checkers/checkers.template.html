@@ -1,0 +1,16 @@
+<h1>Randomly Arranged Checkers on an 8x8 Board</h1>
+<table>
+  <tr ng-repeat="row in $ctrl.board.the_checkers track by $index" ng-init="x = $index+1">
+    <td ng-repeat="checker in row track by $index" class="{{ checker }}">{{ ($index+1) +","+ x +" "+ checker }}</td>
+  </tr>
+</table>
+<div ng-if="$ctrl.board.wins.length >= 1">
+  <h2>There are 4 in a Row</h2>
+  <h3>Instances of 4 in a Row (coords x,y)</h3>
+  <ul>
+    <li ng-repeat="win in $ctrl.board.wins track by $index">{{win}}</li>
+  </ul>
+</div>
+<div ng-if="$ctrl.board.wins.length == 0">
+  <h2>There is not 4 in a Row</h2>
+</div>

@@ -1,0 +1,19 @@
+/* app css stylesheet */
+
+body {padding: 1em;}
+
+table tr td {
+  border: 1px solid #999;
+  padding: 1em;
+}
+table tr td.empty {
+  background-color: white;
+}
+table tr td.black {
+  background-color: black;
+  color: white;
+}
+table tr td.red {
+  background-color: red;
+  color: #ccc;
+}
