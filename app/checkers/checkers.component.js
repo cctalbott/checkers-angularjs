@@ -85,7 +85,6 @@ app.factory('CheckWins', ['Board', function(Board) {
         }
       }
     }
-    
     return wins;
   }
   return CheckWins
@@ -96,7 +95,7 @@ app.factory('Board', ['Checkers', function(Checkers) {
   var Board = {
     "rows": [1,2,3,4,5,6,7,8],
     "cols": [1,2,3,4,5,6,7,8],
-    "checkers": Checkers
+    "checkers": Checkers.all()
   };
   
   return Board;
@@ -107,16 +106,18 @@ app.factory('Checkers', ['Checker', function(Checker) {
   var Checkers = {};
   var rows = 8;
   var cols = 8;
+  var board_array = [];
   
-  var board_array = [];  
-  for(var x = 0; x < rows; x++) {
-    var cells_array = [];
-    for(var y = 0; y < cols; y++) {
-      cells_array.push(Checker.colors[Math.floor(Math.random() * Checker.colors.length)]);
+  Checkers.all = function() {  
+    for(var x = 0; x < rows; x++) {
+      var cells_array = [];
+      for(var y = 0; y < cols; y++) {
+        cells_array.push(Checker.colors[Math.floor(Math.random() * Checker.colors.length)]);
+      }
+      board_array.push(cells_array);
     }
-    board_array.push(cells_array);
+    return board_array;
   }
-  Checkers = board_array;
   
   return Checkers;
 }]);

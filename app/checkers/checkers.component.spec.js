@@ -1,9 +1,29 @@
 'use strict';
 
 describe('checkers', function() {
-  
   // Load the module that contains the `checkers` component before each test
   beforeEach(module('checkers'));
+  
+  // Mock data
+  var checkersList = [
+    ['black', 'red', 'red', 'black', 'black', 'black', 'black', 'black'], 
+    ['empty', 'red', 'black', 'red', 'empty', 'empty', 'red', 'black'], 
+    ['black', 'red', 'black', 'empty', 'black', 'empty', 'empty', 'black'], 
+    ['red', 'black', 'red', 'red', 'black', 'red', 'empty', 'red'], 
+    ['red', 'black', 'black', 'black', 'black', 'black', 'red', 'empty'], 
+    ['red', 'empty', 'red', 'black', 'empty', 'empty', 'empty', 'black'], 
+    ['red', 'empty', 'black', 'black', 'red', 'empty', 'black', 'empty'], 
+    ['red', 'empty', 'black', 'empty', 'red', 'red', 'empty', 'black']
+  ]
+  var winsList = [
+    'Horizontal four in a row from 4,1 to 7,1', 
+    'Horizontal four in a row from 2,5 to 5,5', 
+    'Back slash four in a row from 5,2 to 8,5', 
+    'Back slash four in a row from 1,3 to 4,6', 
+    'Vertical four in a row from 1,4 to 1,7', 
+    'Vertical four in a row from 1,5 to 1,8'
+  ]
+  
   
   // Test factories
   describe('Checker', function() {
@@ -18,8 +38,15 @@ describe('checkers', function() {
   });
   
   describe('Checkers', function() {
+    beforeEach(inject(function(Checkers) {
+      spyOn(Checkers, 'all').and.callFake(function() {
+        return checkersList;
+      });
+    }));
+    
     it('can get an instance of `Checkers` factory', inject(function(Checkers) {
       expect(Checkers).toBeDefined();
+      expect(Checkers.all()).toEqual(checkersList);
     }));
   });
   
@@ -38,6 +65,7 @@ describe('checkers', function() {
     it('can get an instance of `CheckWins` factory', inject(function(CheckWins) {
       expect(CheckWins).toBeDefined();
       expect(CheckWins.wins).toBeDefined();
+      expect(CheckWins.wins(checkersList)).toEqual(winsList);
     }));
   });
   
