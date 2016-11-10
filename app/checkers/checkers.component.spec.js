@@ -18,7 +18,6 @@ describe('checkers', function() {
   var winsList = [
     'Horizontal four in a row from 4,1 to 7,1', 
     'Horizontal four in a row from 2,5 to 5,5', 
-    'Back slash four in a row from 5,2 to 8,5', 
     'Back slash four in a row from 1,3 to 4,6', 
     'Vertical four in a row from 1,4 to 1,7', 
     'Vertical four in a row from 1,5 to 1,8'
