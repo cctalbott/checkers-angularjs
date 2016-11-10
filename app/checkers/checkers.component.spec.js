@@ -21,30 +21,25 @@ describe('checkers', function() {
       expect(ctrl.board).not.toBe(null);
       expect(ctrl.board.rows).not.toBe(null);
       expect(ctrl.board.rows.length).toBe(8);
+      expect(ctrl.board.checkers).not.toBe(null);
+      expect(ctrl.board.checkers.length).toBe(8);
+      expect(ctrl.board.checkers[0].length).toBe(8);
+      expect(ctrl.board.checkers[0][0]).toMatch("red|black|empty");
     });
     
-    it('`board` object should have `rows` array with 8 items', function() {
-      expect(ctrl.board.rows).not.toBe(null);
-      expect(ctrl.board.rows.length).toBe(8);
-    });
-    
-    it('should create a `checker_colors` array with 3 colors, red, black and empty', function() {
-      expect(ctrl.board.checker_colors).not.toBe(null);
-      expect(ctrl.board.checker_colors.length).toBe(3);
-      expect(ctrl.board.checker_colors).toContain("red");
-      expect(ctrl.board.checker_colors).toContain("black");
-      expect(ctrl.board.checker_colors).toContain("empty");
-    });
-    
-    it('should create a `the_checkers` array with 8 sub arrays with 8 items each populated from `checker_colors`', function() {
-      expect(ctrl.board.the_checkers).not.toBe(null);
-      expect(ctrl.board.the_checkers.length).toBe(8);
-      expect(ctrl.board.the_checkers[0].length).toBe(8);
-      expect(ctrl.board.the_checkers[0][0]).toMatch("red|black|empty");
-    });
-    
-    it('should create a `wins` array to be populated depending on `the_checkers` array if 4 in a row exists', function() {
+    it('should create a `wins` object', function() {
       expect(ctrl.board.wins).not.toBe(null);
     });
+  });
+  
+  describe('Checker', function() {
+    it('can get an instance of `Checker` factory', inject(function(Checker) {
+      expect(Checker).toBeDefined();
+      expect(Checker.colors).not.toBe(null);
+      expect(Checker.colors.length).toBe(3);
+      expect(Checker.colors).toContain("red");
+      expect(Checker.colors).toContain("black");
+      expect(Checker.colors).toContain("empty");
+    }));
   });
 });
